@@ -1,0 +1,17 @@
+h2 {{title}}
+.row
+  .col-xs-2
+    form(role='form', novalidate, name='zipForm')
+      .form-group
+        label(for='zip') Enter Zip Code
+        input.form-control#zip(required, autofocus, ng-pattern='/^[0-9]{5}$/', ng-model='zip', type='number', name='zip')
+      .form-group
+        button.btn.btn-primary(ng-show='zipForm.$valid', ng-click='getConditions()') Submit
+  .col-xs-10
+.row
+  #current(ng-show='conditions')
+    img(src="{{conditions.icon_url}}")
+    h2 Actual Temp: {{conditions.temp_f}}&deg F;
+    h2 Feels Like: {{conditions.feelslike_f}}&deg F;
+    h2 UV Index: {{conditions.UV}}
+    h2 Wind Speed: {{conditions.wind_mph}} mph

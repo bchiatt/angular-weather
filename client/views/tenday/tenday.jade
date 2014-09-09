@@ -1,0 +1,14 @@
+h2 {{title}}
+.row
+  .col-xs-2
+    form(role='form', novalidate, name='zipForm')
+      .form-group
+        label(for='zip') Enter Zip Code
+        input.form-control#zip(required, autofocus, ng-pattern='/^[0-9]{5}$/', ng-model='zip', type='number', name='zip')
+      .form-group
+        button.btn.btn-primary(ng-show='zipForm.$valid', ng-click='getTenday()') Submit
+  .col-xs-10
+.row
+  #forecast(ng-show='forecasts')
+    .forecast(ng-repeat='forecast in forecasts')
+      img(ng-src='{{forecast.icon_url}}')
